@@ -11,7 +11,6 @@ define(['jquery', 'knockout', './router', 'bootstrap', 'knockout-projections'], 
 
   ko.components.register('provider-carousel', { require: 'components/provider-carousel/provider-carousel' });
 
-
   // [Scaffolded component registrations will be inserted here. To retain this feature, don't remove this comment.]
 
   // Start the application

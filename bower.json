@@ -1,8 +1,0 @@
-{
-  "name": "tdd-example",
-  "dependencies": {
-    "requirejs": "~2.1.5",
-    "lodash": ">= 2.2.1",
-    "jasmine": "~1.3.1"
-  }
-}

@@ -63,79 +63,79 @@
                     });
 
                     it('shows logo for first provider', function() {
-                        expect(getImageForUrl( provider1.logoUrl).length).toBe(1);
+                        expect(getImageForUrl( provider1.logoUrl)).toExist();
                     });
 
                     it('shows logo for fitfth provider', function() {
-                        expect(getImageForUrl( provider5.logoUrl).length).toBe(1);
+                        expect(getImageForUrl( provider5.logoUrl)).toExist();
                     });
 
                     it('does not show logo for sixth provider', function() {
-                        expect(getImageForUrl( provider6.logoUrl).length).not.toBe(1);
+                        expect(getImageForUrl( provider6.logoUrl)).not.toExist();
                     });
 
                     describe('when user clicks previous arrow and already at start', function() {
 
                         beforeEach(function() {
-                            $('.prevArrow').click();
+                            $('#previous').click();
                         });
 
                         it('shows logo for first provider', function() {
-                            expect(getImageForUrl( provider1.logoUrl).length).toBe(1);
+                            expect(getImageForUrl( provider1.logoUrl)).toExist();
                         });
 
                         it('shows logo for fitfth provider', function() {
-                            expect(getImageForUrl( provider5.logoUrl).length).toBe(1);
+                            expect(getImageForUrl( provider5.logoUrl)).toExist();
                         });
                     });
 
                     describe('when user clicks on next arrow', function() {
                         beforeEach(function() {
-                            $('.nextArrow').click();
+                            $('#next').click();
                         });
 
                         it('does not show logo for first provider', function() {
-                            expect(getImageForUrl( provider1.logoUrl).length).not.toBe(1);
+                            expect(getImageForUrl( provider1.logoUrl)).not.toExist();
                         });
 
                         it('shows logo for sixth provider', function() {
-                            expect(getImageForUrl( provider6.logoUrl).length).toBe(1);
+                            expect(getImageForUrl( provider6.logoUrl)).toExist();
                         });
 
                         describe('then when user clicks on next arrow but carousel is at the end', function() {
                             beforeEach(function() {
-                                $('.nextArrow').click();
+                                $('#next').click();
                             });
 
                             it('does not show logo for first provider', function() {
-                                expect(getImageForUrl( provider1.logoUrl).length).not.toBe(1);
+                                expect(getImageForUrl( provider1.logoUrl)).not.toExist();
                             });
 
                             it('shows logo for second provider', function() {
-                                expect(getImageForUrl( provider2.logoUrl).length).toBe(1);
+                                expect(getImageForUrl( provider2.logoUrl)).toExist();
                             });
 
                             it('shows logo for sixth provider', function() {
-                                expect(getImageForUrl( provider6.logoUrl).length).toBe(1);
+                                expect(getImageForUrl( provider6.logoUrl)).toExist();
                             });
                         });
 
                         describe('then when user clicks on previous arrow', function() {
                             beforeEach(function() {
-                                $('.prevArrow').click();
+                                $('#previous').click();
                             });
 
 
                             it('shows logo for first provider', function() {
-                                expect(getImageForUrl( provider1.logoUrl).length).toBe(1);
+                                expect(getImageForUrl( provider1.logoUrl)).toExist();
                             });
 
                             it('shows logo for fitfth provider', function() {
-                                expect(getImageForUrl( provider5.logoUrl).length).toBe(1);
+                                expect(getImageForUrl( provider5.logoUrl)).toExist();
                             });
 
                             it('does not show logo for sixth provider', function() {
-                                expect(getImageForUrl( provider6.logoUrl).length).not.toBe(1);
+                                expect(getImageForUrl( provider6.logoUrl)).not.toExist();
                             });
                         })
 
@@ -147,7 +147,7 @@
                         });
 
                         it('displays details for that provider', function() {
-                            expect(findSpanContainingText(provider1.details).is(':visible')).toBeTruthy();
+                            expect(findSpanContainingText(provider1.details)).toExist();
                         });
 
                         describe('then when user selects different provider', function() {
@@ -156,7 +156,7 @@
                             });
 
                             it('displays details for new provider', function() {
-                                expect(findSpanContainingText(provider2.details).is(':visible')).toBeTruthy();
+                                expect(findSpanContainingText(provider2.details)).toExist();
                             });
                         })
                     })

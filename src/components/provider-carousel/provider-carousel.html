@@ -1,0 +1,8 @@
+<h2>provider-carousel</h2>
+<div data-bind="foreach:visibleProviders">
+    <img src="" data-bind="attr: {src: logoUrl}, click: selectProvider"/>
+</div>
+<button id="previous" data-bind="click: previous"></button>
+<button id="next" data-bind="click: next"></button>
+
+<span data-bind="text: selectedProvider().details"></span>

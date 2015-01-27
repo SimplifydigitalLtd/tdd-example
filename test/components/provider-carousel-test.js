@@ -14,12 +14,20 @@
 
             beforeEach(function () {
                 fixture = setFixtures('<' + componentName + ' params="{providers: providers}"></' + componentName + '>');
+
             });
+
 
             describe('when component loads', function() {
 
                 beforeEach(function() {
+                    jasmine.clock().install();
                     ko.applyBindings({providers: expectedProviders}, $('#jasmine-fixtures')[0]);
+                });
+
+
+                afterEach(function() {
+                    jasmine.clock().uninstall();
                 });
 
                 it('has a img element for each provider provided', function() {
@@ -32,8 +40,22 @@
                 });
 
                 it('does not display details of any providers initialls', function() {
-                    expect($("span:contains('"+ expectedProviders[0].details +"')").is(':visible')).toBeFalsy();
-                    expect($("span:contains('"+ expectedProviders[1].details +"')").is(':visible')).toBeFalsy();
+                    expect(findSpanContainingText(expectedProviders[0].details).is(':visible')).toBeFalsy();
+                    expect(findSpanContainingText(expectedProviders[1].details).is(':visible')).toBeFalsy();
+                });
+
+                it('has timer set to 0 seconds to start', function() {
+                    expect(findSpanContainingText("0").length).toBe(1);
+                });
+
+                describe('after 10 seconds', function() {
+                    beforeEach(function() {
+                        jasmine.clock().tick(10000);
+                    });
+
+                    it('has timer set to 10 seconds', function() {
+                        expect(findSpanContainingText("10").length).toBe(1);
+                    });
                 });
 
                 describe('when user clicks on provider', function() {
@@ -42,7 +64,7 @@
                     });
 
                     it('displays details for that provider', function() {
-                        expect($("span:contains('"+ expectedProviders[0].details +"')").is(':visible')).toBeTruthy();
+                        expect(findSpanContainingText(expectedProviders[0].details).is(':visible')).toBeTruthy();
                     });
 
                     describe('then when user selects different provider', function() {
@@ -51,7 +73,7 @@
                         });
 
                         it('displays details for new provider', function() {
-                            expect($("span:contains('"+ expectedProviders[1].details +"')").is(':visible')).toBeTruthy();
+                            expect(findSpanContainingText(expectedProviders[1].details).is(':visible')).toBeTruthy();
                         });
                     })
                 })
@@ -59,6 +81,10 @@
 
             function getImageForUrl(providerLogo) {
                 return $("img[src='"+ providerLogo +"']");
+            }
+
+            function findSpanContainingText(text) {
+                return $("span:contains('"+ text +"')")
             }
         });
 

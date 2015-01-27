@@ -9,6 +9,7 @@ var require = {
         "knockout":             "bower_modules/knockout/dist/knockout",
         "knockout-projections": "bower_modules/knockout-projections/dist/knockout-projections",
         "signals":              "bower_modules/js-signals/dist/signals.min",
+        "lodash" :                   "bower_modules/lodash/lodash",
         "text":                 "bower_modules/requirejs-text/text"
     },
     shim: {
